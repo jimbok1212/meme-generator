@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, onInitial-scale=1.0">
+    <title>Memes Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel='icon' href="logos/favicon.ico"/>
+</head>
+<body onload="onInit()">
+    <header class="header flex justify-between align-center">
+        <a class="logo" href="#" onclick="onGallery()"><img src="logos/Memes Generator.svg"></a>
+        <ul class="main-menu clean-list flex align-center">
+              <li><a href="#" onclick="onGallery()">Gallery</a></li>
+        </ul>
+    </header>
+    <form onsubmit="getFilteredImgs()">
+        <label for="category">Choose your category from the list:</label>
+        <input list="categories" name="category" id="category">
+        <datalist id="categories">
+          <option value="politics">
+          <option value="animals">
+          <option value="cute">
+          <option value="baby">
+          <option value="funny">
+          <option value="tv">
+          <option value="sports">
+          <option value="kids">
+        </datalist>
+        <input type="submit">
+      </form>
+    <main class="images-container flex"></main>
+    <main class="meme-editor flex hidden">
+        <section class="canvas-container">
+            <canvas id="my-canvas" width="600" height="600"></canvas>
+        </section>
+        <section class="control-box grid">
+            <input class="edit-input" type="text" placeholder="text line" oninput="updateText(this)">
+            <button onclick="onNewLine()">Add</button>
+            <button onclick="onRemoveLine()">🗑</button>
+            <button onclick="onSwitchLines()">🔁</button>
+            <button onclick="onChangeSize(2)">➕</button>
+            <button onclick="onChangeSize(-2)">➖</button>
+            <input type="color" onchange="onChangeColor(this)">
+            <button><a href="#" onclick="downloadCanvas(this)" download="">Download</a></button>
+            <button class="moveUp" onclick="moveUp()">🢁</button>
+            <button class="moveDown" onclick="moveDown()">🢃</button>
+            <button class="moveLeft" onclick="moveLeft()">🢀</button>
+            <button class="moveRight" onclick="moveRight()">🢂</button>
+        </section>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/gallery-service.js"></script>
+    <script src="js/editor-service.js"></script>
+    <script src="js/gallery-controller.js"></script>
+    <script src="js/editor-controller.js"></script>
+</body>
+</html>
