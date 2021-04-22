@@ -5,6 +5,7 @@ const elImagesContainer = document.querySelector('.images-container')
 const elMemeEditor = document.querySelector('.meme-editor')
 
 let gImgs;
+
 let gKeyWords = [
     ['politics'],
     ['animals', 'cute'],
@@ -16,24 +17,24 @@ let gKeyWords = [
     ['tv', 'funny'],
     ['cute', 'baby', 'funny'],
     ['politics', 'funny'],
-    ['sports','funny'],
+    ['sports', 'funny'],
     ['tv'],
-    ['tv','funny'],
+    ['tv', 'funny'],
     ['tv'],
     ['tv'],
-    ['tv','funny'],
+    ['tv', 'funny'],
     ['politics'],
-    ['tv','kids']
+    ['tv', 'kids']
 ]
 
 function createImgs() {
     let img = loadFromStorage(KEY)
     if (!img || !img.length) {
         img = [];
-        for (let i = 0; i <= 18; i++) {
+        for (let i = 0; i <= img.length; i++) {
             let x = createImg(i)
             img.push(x)
-            
+
         }
     }
     gImgs = img
@@ -48,7 +49,7 @@ function createImg(i) {
     }
 }
 
-function getImgs(){
+function getImgs() {
     return gImgs
 }
 

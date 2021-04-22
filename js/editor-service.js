@@ -1,9 +1,7 @@
 'use strict'
 
-const gElCanvas = document.getElementById('my-canvas');
-let gCtx = gElCanvas.getContext('2d');
-
 let gMeme;
+
 
 function resetCanvas(urlImg) {
     gMeme = {
@@ -20,6 +18,7 @@ function resetCanvas(urlImg) {
             align: 'center',
             color: 'blue',
             font: 'IMPACT',
+            isDragging: false
         }, ],
     }
 }
@@ -38,11 +37,11 @@ function renderCanvas() {
     drawImg(renderText)
 }
 
-function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
-}
+// function resizeCanvas() {
+//     const elContainer = document.querySelector('.canvas-container')
+//     gElCanvas.width = elContainer.offsetWidth
+//     gElCanvas.height = elContainer.offsetHeight
+// }
 
 function drawImg(renderText) {
     const img = new Image()
@@ -97,6 +96,8 @@ function newLine() {
         align: 'center',
         color: 'blue',
         font: 'IMPACT',
+        isDragging: false
+
     }
     gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.lines.length - 1
@@ -104,9 +105,9 @@ function newLine() {
     renderCanvas()
 }
 
-function switchLines(){
+function switchLines() {
     gMeme.selectedLineIdx -= 1
-    if(gMeme.selectedLineIdx<0){
+    if (gMeme.selectedLineIdx < 0) {
         gMeme.selectedLineIdx = gMeme.lines.length
     }
     renderCanvas()
@@ -122,7 +123,7 @@ function removeLine() {
 function changeSize(diff) {
     if (gMeme.lines[gMeme.selectedLineIdx].size + diff <= 20 ||
         gMeme.lines[gMeme.selectedLineIdx].size + diff >= 100) return
-        gMeme.lines[gMeme.selectedLineIdx].size += diff
+    gMeme.lines[gMeme.selectedLineIdx].size += diff
     renderCanvas()
 }
 
